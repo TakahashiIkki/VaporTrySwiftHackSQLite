@@ -23,11 +23,11 @@ $ vapor run serve
 ``` 
 
 Then, Enter 
-- GET `http://localhost:8080/users`
+- GET `http://localhost:8080/users`  
 -- You can get all of users table data.
 
 
-- GET `http://localhost:8080/users/:id`
+- GET `http://localhost:8080/users/:id`  
 -- You can get one of users table data by id.
 
 
