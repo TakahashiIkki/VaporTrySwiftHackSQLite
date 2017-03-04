@@ -66,4 +66,35 @@ drop.post("users") { request in
     return try JSON(node: result)
 }
 
+/*
+ * PUT
+ * users/:id
+ * You can edit `users`(the table on sqlite) data By id(request).
+ * parameter:  {"email":"xxx","password":"xxx"}
+ */
+drop.put("users", Int.self) { request, userId in
+    guard let email = request.json?["email"]?.string! else {
+        throw Abort.custom(status: .badRequest, message: "Sorry, Email is Missing")
+    }
+    
+    guard let password = request.json?["password"]?.string! else {
+        throw Abort.custom(status: .badRequest, message: "Sorry, Password is Missing")
+    }
+    
+    let result = try drop.database?.driver.raw("UPDATE users SET email = ?, password = ? WHERE id = ?", [email, password, userId])
+    
+    return try JSON(node: result)
+}
+
+/*
+ * DELETE
+ * users/:id
+ * You can delete `users`(the table on sqlite) data By id(request).
+ */
+drop.delete("users", Int.self) { request, userId in
+    let result = try drop.database?.driver.raw("DELETE FROM users WHERE id = ?", [userId])
+    
+    return try JSON(node: result)
+}
+
 drop.run()
