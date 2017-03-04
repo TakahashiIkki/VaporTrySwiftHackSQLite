@@ -6,8 +6,6 @@ I tried "Vapor" (this is Server Side Swift framework).
 
 I tried `CRUD` using Vapor by SQLite.
 
-And now, I can `Create` and `Read`.
-
 # How to Check
 
 Please Set up Vapor.
@@ -23,16 +21,27 @@ $ vapor run serve
 ``` 
 
 Then, Enter 
-- GET `http://localhost:8080/users`  
+- **GET** `http://localhost:8080/users`  
 -- You can get all of users table data.
 
 
-- GET `http://localhost:8080/users/:id`  
+- **GET** `http://localhost:8080/users/:id`  
 -- You can get one of users table data by id.
 
 
-- POST `http://localhost:8080/uses`  
+- **POST** `http://localhost:8080/uses`  
 -- You can save request data.
+-- request_exmple: {"email":"test1@example.com","password":"1234567890"}
+
+
+- **PUT** `http://localhost:8080/uses/:id.`  
+-- You can edit users data.
+-- request_exmple: {"email":"test2@example.com","password":"1234567890"}
+
+
+- **DELETE** `http://localhost:8080/uses/:id`  
+-- You can delete users data by id.
+
 
 They are sample for features of routing by "Vapor".
 
